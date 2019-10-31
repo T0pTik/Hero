@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Radix - Hugo Hero Theme</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="icon" href="/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.7c97e2f67b9535ba50758c949e2a04bc3064def6891873451547d5be7ba6b765.css">
+  
+
+  
+
+</head>
+
+<body class='page '>
+  <div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-blank">
+      <a href="/blank/">
+        
+        <span>Blank</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-bucket">
+      <a href="/bucket/">
+        
+        <span>Bucket</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-heap">
+      <a href="/heap/">
+        
+        <span>Heap</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-counting">
+      <a href="/counting/">
+        
+        <span>Counting</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-radix active">
+      <a href="/radix/">
+        
+        <span>Radix</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+  <div id="wrapper" class="wrapper">
+    <div class='header header-absolute'>
+  <div class="container">
+    <div class="logo">
+      <a href="/"><img alt="Figurit Homepage" src="/images/logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="/"><img alt="Figurit Homepage" src="/images/logo-mobile.svg" /></a>
+    </div>
+    <div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-blank">
+      <a href="/blank/">
+        
+        <span>Blank</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-bucket">
+      <a href="/bucket/">
+        
+        <span>Bucket</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-heap">
+      <a href="/heap/">
+        
+        <span>Heap</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-counting">
+      <a href="/counting/">
+        
+        <span>Counting</span>
+      </a>
+    </li>
+    
+    <li class="menu-item-radix active">
+      <a href="/radix/">
+        
+        <span>Radix</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+  </div>
+</div>
+    
+
+<div class="container pt-10 pb-6">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="title-1 black">Radix</h1>
+      
+
+
+<p>Исходно предназначен для сортировки целых чисел, записанных цифрами. Но так как в памяти компьютеров любая информация записывается целыми числами, алгоритм пригоден для сортировки любых объектов, запись которых можно поделить на «разряды», содержащие сравнимые значения. Например, так сортировать можно не только числа, записанные в виде набора цифр, но и строки, являющиеся набором символов, и вообще произвольные значения в памяти, представленные в виде набора байт.</p>
+<p>Сравнение производится поразрядно: сначала сравниваются значения одного крайнего разряда, и элементы группируются по результатам этого сравнения, затем сравниваются значения следующего разряда, соседнего, и элементы либо упорядочиваются по результатам сравнения значений этого разряда внутри образованных на предыдущем проходе групп, либо переупорядочиваются в целом, но сохраняя относительный порядок, достигнутый при предыдущей сортировке. Затем аналогично делается для следующего разряда, и так до конца.</p>
+<p>Так как выравнивать сравниваемые записи относительно друг друга можно в разную сторону, на практике существуют два варианта этой сортировки. Для чисел они называются в терминах значимости разрядов числа, и получается так: можно выровнять записи чисел в сторону менее значащих цифр (по правой стороне, в сторону единиц, least significant digit, LSD) или более значащих цифр (по левой стороне, со стороны более значащих разрядов, most significant digit, MSD).</p>
+<p>При LSD сортировке (сортировке с выравниванием по младшему разряду, направо, к единицам) получается порядок, уместный для чисел. Например: 1, 2, 9, 10, 21, 100, 200, 201, 202, 210. То есть, здесь значения сначала сортируются по единицам, затем сортируются по десяткам, сохраняя отсортированность по единицам внутри десятков, затем по сотням, сохраняя отсортированность по десяткам и единицам внутри сотен, и т. п.</p>
+<p>При MSD сортировке (с выравниванием в сторону старшего разряда, налево), получается алфавитный порядок, который уместен для сортировки строк текста. Например «b, c, d, e, f, g, h, i, j, ba» отсортируется как «b, ba, c, d, e, f, g, h, i, j». Если MSD применить к числам, приведённым в примере получим последовательность 1, 10, 100, 2, 200, 201, 202, 21, 210, 9.</p>
+<p>Накапливать при каждом проходе сведения о группах можно разными способами — например в списках, в деревьях, в массивах, выписывая в них либо сами элементы, либо их индексы и т. п.</p>
+<p>Существует нестабильный вариант рекурсивной побитовой сортировки, выполняющейся непосредственно в сортируемом массиве: на первом проходе движение идёт навстречу друг другу, в начале массива ищется элемент с 1 в первом битовом разряде, в конце массива ищется элемент с 0 в том же разряде. Найденные элементы меняются местами, и так до тех пор, пока рассматриваемые индексы не встретятся. Таким образом в начале массива, до места встречи индексов, собираются все элементы с битом равным 0, а после этого индекса — все элементы с равным 1. Далее рекурсивно можно полностью аналогично перебрать получившиеся поддиапазоны массива, сравнивая значения второго и последующих разрядов, и переставляя элементы местами.</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="container pb-6">
+  <div class="row">
+    
+  </div>
+</div>
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <ul class="footer-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li class="copyright">© 2019 Hugo Hero Theme</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Phone: </strong>XXXX XXX XXX</li>
+            <li><strong>Email: </strong><a href="mailto:zerostaticthemes@gmail.com">
+                zerostaticthemes@gmail.com</a></li>
+          </ul>
+          <ul>
+            <li class="zerostatic"><a href="https://www.zerostatic.io">www.zerostatic.io</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/scripts.min.bf1e1f7ae8e03db5f012356e825843facdff51c0a559cb0d27fe2bbe1db405c2.js"></script>
+  
+
+  
+  
+  
+    
+  
+
+
+</body>
+</html>

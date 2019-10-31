@@ -1,0 +1,32 @@
+---
+title: "Laba_5"
+author: <h2>Kolesnikov </h2>
+date: <h2>17 10 2019</h2>
+output:
+  html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Hello GOD language of R
+Мне надо произвести произвольный расчет. И к тому же
+использовать различное форматирование. Так же,я обожаю язык R (не
+так сильно).
+```{r}
+a <- 10
+b <- 7
+c <- 8
+if ((a+b>c) & (a+c>b) & (b+c>a)) {
+cat("Треугольник существует")
+} else {
+cat("Треугольник не существует")
+}
+```
+# Здесь будет график
+Вот буквально ниже, смотрите внимательно!
+
+```{r, echo=FALSE}
+chippy <- function(x) sin(cos(x)*exp(-x/2))
+curve(chippy, -8, 7, n = 2001)
+plot (chippy, -8, -5)
+```

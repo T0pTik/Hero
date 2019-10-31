@@ -1,0 +1,9 @@
+---
+title: "Blank_zadanie"
+author: "Kolesnikov"
+date: "31 10 2019"
+output: html_document
+---
+
+![Caption for the picture.](C:\Users\71376159\Documents\Hero\content\Blank\s1.PNG)
+![Caption for the picture.](C:\Users\71376159\Documents\Hero\content\Blank\s2.PNG)
